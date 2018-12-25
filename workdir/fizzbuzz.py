@@ -61,12 +61,6 @@ BATCH_SIZE = 128
 
 # Launch the graph in a session
 with tf.Session() as sess:
-    # TensorBoardで追跡する変数を定義
-    with tf.name_scope('summary'):
-        tf.summary.scalar('cost', cost)
-        merged = tf.summary.merge_all()
-        writer = tf.summary.FileWriter('./logs', sess.graph)
-
     tf.initialize_all_variables().run()
 
     for epoch in range(10000):
