@@ -1,0 +1,20 @@
+version: '2'
+services:
+  tensorflow:
+    image: tensorflow/tensorflow:latest-py3
+    volumes:
+      - ./workdir:/workdir
+    working_dir: /workdir
+    ports:
+      - 8888:8888
+    environment:
+      PASSWORD: password
+    
+  tensorboard:
+    image: tensorflow/tensorflow:latest-py3
+    volumes:
+      - ./workdir/logs:/logs
+    working_dir: /logs
+    ports:
+      - 6006:6006
+    command: tensorboard --logdir=/logs
